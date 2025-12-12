@@ -28,7 +28,7 @@ tree
 
 Masuk ke direktori tarball yang sudah dibongkar lalu jalankan `debmake`.
 ```
-cd debhello-00
+cd debhello-0.0
 debmake
 ```
 
@@ -120,20 +120,18 @@ Index: debhello-0.0/Makefile
  all: src/hello
 ```
 
-
-## Re-unpack and re-patch
+## Catat perubahan
 
 ```
-dpkg-buildpackage -S #
-cd ..
-rm -rf debhello-0.0
-dpkg-source -x debhello_0.0-1.dsc # Extract tarball dengan patch
+dch -i
 ```
+
+Lalu isikan informasi terkait perubahan. Ikuti panduan penomoran versi dari https://github.com/BlankOn/wiki/blob/master/TimPengembang/Pemaket/PenomoranVersi.md
+
 
 ## Build
 
 ```
-cd debhello-0.0
 debuild
 ```
 
@@ -142,4 +140,17 @@ Keluaran,
 ls ..
 README.md     debhello-0.0.tar.gz               debhello_0.0-1.debian.tar.xz  debhello_0.0-1_amd64.build      debhello_0.0-1_amd64.changes  debhello_0.0-1_source.buildinfo  debhello_0.0.orig.tar.gz
 debhello-0.0  debhello-dbgsym_0.0-1_amd64.ddeb  debhello_0.0-1.dsc            debhello_0.0-1_amd64.buildinfo  debhello_0.0-1_amd64.deb      debhello_0.0-1_source.changes    reset.sh
+```
+
+
+
+## Optional for learning purpose
+
+### Re-unpack and re-patch
+
+```
+dpkg-buildpackage -S #
+cd ..
+rm -rf debhello-0.0
+dpkg-source -x debhello_0.0-1.dsc # Extract tarball dengan patch
 ```
